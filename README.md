@@ -26,4 +26,4 @@ FillArray(array,10,100); заполняем массив рандомными ч
 
 Console.WriteLine(PrintArray(array)); печатаем начальный массив
 
-Console.WriteLine(PrintArray(EvenNumbers(array))); печатаем массив на основе первого, но только слстоящий из чётных числа
+Console.WriteLine(PrintArray(EvenNumbers(array))); печатаем массив на основе первого, но только состоящий из чётных числа
