@@ -1,52 +1,44 @@
-# Prerequisites
-*.d
+// Написать программу, которая из имеющегося массива целых чисел формирует массив из четных чисел. Первоначальный массив можно ввести с клавиатуры, либо сгенерировать случайным образом. При решении не рекомендуется пользоваться коллекциями, лучше обойтись исключительно массивами.
+int[] CreateArray(int count) // Метод создания массива
+{
+    return new int[count];
+}
+void FillArray(int[] array, int minValue, int maxValue) // метод заполнения массива
+{
+    int count = array.Length;
+    for (int i = 0; i < count; i++)
+    {
+        array[i] = new Random().Next(minValue, maxValue);
+    }
+}
+string PrintArray(int[] array) // метод печать массива
+{
+    int count = array.Length;
+    string res = String.Empty;
+    for (int i = 0; i < count; i++)
+    {
+        res += $"{array[i]} ";
+    }
+    return res;
+}
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+int[] EvenNumbers(int[] array)// метод создания другого массива на основе первого, состоящего из чётных чисел
+{
+    int[] arrayB = new int[array.Length];
+    int count = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i] % 2 == 0)
+        {
+            arrayB[count] = array[i];
+            count++;
+        }
+    }
+    Array.Resize(ref arrayB, count);
+    return arrayB;
+}
 
-# Linker output
-*.ilk
-*.map
-*.exp
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+int[] array = CreateArray(10); // создаем массив
+FillArray(array, 10, 100); // заполняем массив
+Console.WriteLine(PrintArray(array)); //печатаем начальный массив
+Console.WriteLine(PrintArray(EvenNumbers(array))); // печатаем массив на основе первого, но только чётных числа
